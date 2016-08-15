@@ -1,0 +1,32 @@
+<html lang=en ng-app="weatherWidget">
+
+<head>
+  <meta charset=utf-8>
+  <title>cvent Weather Widget Challenge </title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+  <div ng-controller="weatherWidgetCtrl" class="widgetLayout">
+    <!-- <pre>{{ widgetData.forecast | json }}</pre> -->
+    <div id="currentCondition">
+      <div id="title">{{ title }}</div>
+      <div id="temp">{{ widgetData.condition.temp }}&deg</div>
+      <div id="icon">
+        <img ng-src="http://l.yimg.com/a/i/us/we/52/{{ widgetData.condition.code }}.gif" />
+        <div id="weatherDescription">{{ widgetData.condition.text }}</div>
+      </div>
+    </div>
+    <div id="forecast">
+      <ul>
+        <li class="forecastContent" ng-repeat="index in widgetData.forecast | limitTo: 5">
+          {{ index.day }} <br/> 
+          <span id="forecastTemp">{{ index.high }}&deg / {{ index.low }}&deg</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+<html>
